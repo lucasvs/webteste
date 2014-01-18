@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://www.rtcmulticonnection.org/docs/ -->
+<html id="home" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>RTCMultiConnection Docs</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script async="" src="./RTCMultiConnection Docs_files/messenger.js"></script><script type="text/javascript">window.mod_pagespeed_start = Number(new Date());</script><link rel="author" type="text/html" href="https://plus.google.com/100325991024054712503">
+    <meta name="author" content="Muaz Khan">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://www.webrtc-experiment.com/style.css">
+	
+    <style>p{padding:.8em}li{border-bottom:1px solid #bdbdbd;border-left:1px solid #bdbdbd;padding:.5em}.image-container{text-align:center;margin:2em 0}.image-parent{margin:0 2em;border:2px solid #000;border-radius:5px}.image-parent img{width:100%}li pre{margin-top:0}</style>
+    <!-- for HTML5 el styling -->
+    <script>document.createElement('article');document.createElement('footer');</script><style type="text/css"></style>
+	
+	<script type="text/javascript" src="./RTCMultiConnection Docs_files/sh_main.min.js"></script>
+    <script type="text/javascript" src="./RTCMultiConnection Docs_files/sh_javascript.min.js"></script>
+    <script type="text/javascript" src="./RTCMultiConnection Docs_files/sh_html.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./RTCMultiConnection Docs_files/sh_style.css">
+</head>
+
+<body onload="sh_highlightDocument();" style=""><noscript>&lt;meta HTTP-EQUIV="refresh" content="0;url='http://www.rtcmulticonnection.org/docs/?ModPagespeed=noscript'" /&gt;&lt;style&gt;&lt;!--table,div,span,font,p{display:none} --&gt;&lt;/style&gt;&lt;div style="display:block"&gt;Please click &lt;a href="http://www.rtcmulticonnection.org/docs/?ModPagespeed=noscript"&gt;here&lt;/a&gt; if you are not redirected within a few seconds.&lt;/div&gt;</noscript>
+    <article>
+        <a href="http://www.rtcmulticonnection.org/" style="border-bottom: 1px solid #2844FA; font-size: 1.2em; position: absolute; text-decoration: none;right:0;top:0;">↑ www.RTCMultiConnection.org</a>
+
+        <h1><a href="http://www.rtcmulticonnection.org/">RTCMultiConnection</a> Docs ----/ <a href="http://www.rtcmulticonnection.org/changes-log/">Changes Log</a> | <a href="http://www.rtcmulticonnection.org/FAQ/">FAQ</a></h1>
+		
+		<ol>
+			<li><a href="http://www.rtcmulticonnection.org/docs/getting-started/">Getting Started Guide</a></li>
+			<li>
+				<h2>API Reference</h2>
+				<ol>
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/constructor/">constructor</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">new</span> <span class="sh_function">RTCMultiConnection</span><span class="sh_symbol">(</span><span class="sh_string">'channel-id'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/session/">session</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>session <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+     audio<span class="sh_symbol">:</span>  <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+     video<span class="sh_symbol">:</span>  <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+     screen<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+     data<span class="sh_symbol">:</span>   <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/open/">open</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">'room-id'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/connect/">connect</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">connect</span><span class="sh_symbol">(</span><span class="sh_string">'room-id'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/join/">join</a>
+						<pre class="sh_javascript sh_sourceCode">participant<span class="sh_symbol">.</span>onNewSession <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>session<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// found a conferencing room; join it!</span>
+    participant<span class="sh_symbol">.</span><span class="sh_function">join</span><span class="sh_symbol">(</span>session<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/channel-id/">channel-id</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// via constructor</span>
+<span class="sh_keyword">var</span> connect <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RTCMultiConnection</span><span class="sh_symbol">(</span><span class="sh_string">'channel-id'</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// via open/connect methods</span>
+connection<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">'channel-id'</span><span class="sh_symbol">);</span>
+
+connection<span class="sh_symbol">.</span><span class="sh_function">connect</span><span class="sh_symbol">(</span><span class="sh_string">'channel-id'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/sessionid/">sessionid</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>sessionid <span class="sh_symbol">=</span> <span class="sh_string">'unique-room-id'</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/userid/">userid</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>userid <span class="sh_symbol">=</span> <span class="sh_string">'custom-user-id'</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/send/">send</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span>file <span class="sh_symbol">||</span> data <span class="sh_symbol">||</span> <span class="sh_string">'logest-text-message'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/captureUserMedia/">captureUserMedia</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">var</span> session <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+
+connection<span class="sh_symbol">.</span><span class="sh_function">captureUserMedia</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span> <span class="sh_symbol">(</span>mediaStream<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> session<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/direction/">direction</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>direction <span class="sh_symbol">=</span> <span class="sh_string">'one-to-one'</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/getDevices/">getDevices</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">getDevices</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>devices<span class="sh_symbol">)</span><span class="sh_cbracket">{</span>
+    <span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_keyword">var</span> device <span class="sh_keyword">in</span> devices<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+        device <span class="sh_symbol">=</span> devices<span class="sh_symbol">[</span>device<span class="sh_symbol">];</span>
+        
+        <span class="sh_comment">// device.kind == 'audio' || 'video'</span>
+        console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>device<span class="sh_symbol">.</span>id<span class="sh_symbol">,</span> device<span class="sh_symbol">.</span>label<span class="sh_symbol">);</span>
+    <span class="sh_cbracket">}</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/selectDevices/">selectDevices</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">selectDevices</span><span class="sh_symbol">(</span>firstDeviceID<span class="sh_symbol">,</span> secondDeviceID<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/interval/">interval</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>interval <span class="sh_symbol">=</span> <span class="sh_number">3000</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/transmitRoomOnce/">transmitRoomOnce</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>transmitRoomOnce <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/maxParticipantsAllowed/">maxParticipantsAllowed</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>maxParticipantsAllowed <span class="sh_symbol">=</span> <span class="sh_number">256</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onspeaking/">onspeaking</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onspeaking <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// e.streamid, e.userid, e.stream, etc.</span>
+    e<span class="sh_symbol">.</span>mediaElement<span class="sh_symbol">.</span>style<span class="sh_symbol">.</span>border <span class="sh_symbol">=</span> <span class="sh_string">'1px solid red'</span><span class="sh_symbol">;</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onsilence/">onsilence</a>
+						<pre class="sh_javascript sh_sourceCode">
+connection<span class="sh_symbol">.</span>onsilence <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// e.streamid, e.userid, e.stream, etc.</span>
+    e<span class="sh_symbol">.</span>mediaElement<span class="sh_symbol">.</span>style<span class="sh_symbol">.</span>border <span class="sh_symbol">=</span> <span class="sh_string">''</span><span class="sh_symbol">;</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/openSignalingChannel/">openSignalingChannel</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>openSignalingChannel <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>config<span class="sh_symbol">)</span> <span class="sh_cbracket">{}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/session-initiator/">session-initiator</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/session-participant/">session-participant</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/renegotiation/">renegotiation</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/disableDtlsSrtp/">disableDtlsSrtp</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>disableDtlsSrtp <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/addStream/">addStream</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">addStream</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+    video<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/removeStream/">removeStream</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">removeStream</span><span class="sh_symbol">(</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/attachStreams/">attachStreams</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>attachStreams<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span>mediaStream1<span class="sh_symbol">,</span> mediaStream2<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/startRecording/">startRecording</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><a href="http://www.rtcmulticonnection.org/docs/startRecording/"><span class="sh_function">startRecording</span></a><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+    video<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/stopRecording/">stopRecording</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// stop single audio stream</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><a href="http://www.rtcmulticonnection.org/docs/stopRecording/"><span class="sh_function">stopRecording</span></a><span class="sh_symbol">(</span><span class="sh_keyword">function</span> <span class="sh_symbol">(</span>blob<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// POST "Blob" to PHP/other server using FormData/XHR2</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_cbracket">{</span>audio<span class="sh_symbol">:</span><span class="sh_keyword">true</span><span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// stop single video stream</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><a href="http://www.rtcmulticonnection.org/docs/stopRecording/"><span class="sh_function">stopRecording</span></a><span class="sh_symbol">(</span><span class="sh_keyword">function</span> <span class="sh_symbol">(</span>blob<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// POST "Blob" to PHP/other server using FormData/XHR2</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_cbracket">{</span>video<span class="sh_symbol">:</span><span class="sh_keyword">true</span><span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// stop both audio/video streams</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><a href="http://www.rtcmulticonnection.org/docs/stopRecording/"><span class="sh_function">stopRecording</span></a><span class="sh_symbol">(</span><span class="sh_keyword">function</span> <span class="sh_symbol">(</span>audioBlob<span class="sh_symbol">,</span> videoBlob<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// POST both audio/video "Blobs" to PHP/other server using single FormData/XHR2</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_cbracket">{</span>audio<span class="sh_symbol">:</span><span class="sh_keyword">true</span><span class="sh_symbol">,</span> video<span class="sh_symbol">:</span><span class="sh_keyword">true</span><span class="sh_cbracket">}</span> <span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/detachStreams/">detachStreams</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>detachStreams<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span>streamid1<span class="sh_symbol">,</span> streamid2<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/dontAttachStream/">dontAttachStream</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>dontAttachStream <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/autoCloseEntireSession/">autoCloseEntireSession</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>autoCloseEntireSession <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/autoSaveToDisk/">autoSaveToDisk</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>autoSaveToDisk <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/bandwidth/">bandwidth</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>bandwidth <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_number">50</span><span class="sh_symbol">,</span>
+    video<span class="sh_symbol">:</span> <span class="sh_number">256</span><span class="sh_symbol">,</span>
+    data<span class="sh_symbol">:</span> <span class="sh_number">1638400</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/body/">body</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"container"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span>
+connection<span class="sh_symbol">.</span>body <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">querySelector</span><span class="sh_symbol">(</span><span class="sh_string">'.container'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/candidates/">candidates</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>candidates <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+     relay<span class="sh_symbol">:</span>     <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+     reflexive<span class="sh_symbol">:</span> <span class="sh_keyword">false</span><span class="sh_symbol">,</span>
+     host<span class="sh_symbol">:</span>      <span class="sh_keyword">false</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/channels/">channels</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>channels<span class="sh_symbol">[</span><span class="sh_string">'user-id'</span><span class="sh_symbol">].</span><span class="sh_function">send</span><span class="sh_symbol">(</span>file <span class="sh_symbol">||</span> data <span class="sh_symbol">||</span> <span class="sh_string">'text'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/close/">close</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/leave/">leave</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">leave</span><span class="sh_symbol">();</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/eject/">eject</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><span class="sh_function">eject</span><span class="sh_symbol">(</span>userid<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onleave/">onleave</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onleave <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// e.userid</span>
+    <span class="sh_comment">// e.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onstream/">onstream</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onstream <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// e.mediaElement</span>
+    <span class="sh_comment">// e.stream</span>
+    <span class="sh_comment">// e.streamid</span>
+    <span class="sh_comment">// e.session</span>
+    <span class="sh_comment">// e.blobURL</span>
+    <span class="sh_comment">// e.type</span>
+    <span class="sh_comment">// e.extra</span>
+    <span class="sh_comment">// e.userid</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onstreamended/">onstreamended</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onstreamended <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// e.mediaElement</span>
+    <span class="sh_comment">// e.stream</span>
+    <span class="sh_comment">// e.streamid</span>
+    <span class="sh_comment">// e.session</span>
+    <span class="sh_comment">// e.blobURL</span>
+    <span class="sh_comment">// e.type</span>
+    <span class="sh_comment">// e.extra</span>
+    <span class="sh_comment">// e.userid</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/onMediaError/">onMediaError</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onMediaError <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>error<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    console<span class="sh_symbol">.</span><span class="sh_function">error</span><span class="sh_symbol">(</span>error<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/devices/">devices</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_keyword">var</span> device <span class="sh_keyword">in</span> connection<span class="sh_symbol">.</span>devices<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    device <span class="sh_symbol">=</span> connection<span class="sh_symbol">.</span>devices<span class="sh_symbol">[</span>device<span class="sh_symbol">];</span>
+
+    <span class="sh_comment">// device.kind == 'audio' || 'video'</span>
+    console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>device<span class="sh_symbol">.</span>id<span class="sh_symbol">,</span> device<span class="sh_symbol">.</span>label<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/extra/">extra</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>extra <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+    username<span class="sh_symbol">:</span> <span class="sh_string">'muazkh'</span><span class="sh_symbol">,</span>
+    fullname<span class="sh_symbol">:</span> <span class="sh_string">'Muaz Khan'</span><span class="sh_symbol">,</span>
+    email<span class="sh_symbol">:</span> <span class="sh_string">'muazkh@gmail.com'</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/fileQueue/">fileQueue</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/media/">media</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// Enjoy full-hd video streaming</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">1920</span><span class="sh_symbol">,</span><span class="sh_number">1080</span><span class="sh_symbol">);</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_number">1920</span><span class="sh_symbol">,</span><span class="sh_number">1080</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// Enjoy hd video streaming</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">1280</span><span class="sh_symbol">,</span><span class="sh_number">720</span><span class="sh_symbol">);</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_number">1280</span><span class="sh_symbol">,</span><span class="sh_number">720</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// other possible values</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">960</span><span class="sh_symbol">,</span><span class="sh_number">720</span><span class="sh_symbol">);</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">640</span><span class="sh_symbol">,</span><span class="sh_number">360</span><span class="sh_symbol">);</span> <span class="sh_comment">// -------- it is default</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">640</span><span class="sh_symbol">,</span><span class="sh_number">480</span><span class="sh_symbol">);</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">320</span><span class="sh_symbol">,</span><span class="sh_number">240</span><span class="sh_symbol">);</span>
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span><span class="sh_function">min</span><span class="sh_symbol">(</span><span class="sh_number">320</span><span class="sh_symbol">,</span><span class="sh_number">180</span><span class="sh_symbol">);</span>
+
+connection<span class="sh_symbol">.</span>media<span class="sh_symbol">.</span>minAspectRatio <span class="sh_symbol">=</span> <span class="sh_number">1.77</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/mediaConstraints/">mediaConstraints</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>mediaConstraints<span class="sh_symbol">.</span>mandatory <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+    minWidth<span class="sh_symbol">:</span> <span class="sh_number">1280</span><span class="sh_symbol">,</span>
+    maxWidth<span class="sh_symbol">:</span> <span class="sh_number">1280</span><span class="sh_symbol">,</span>
+    minHeight<span class="sh_symbol">:</span> <span class="sh_number">720</span><span class="sh_symbol">,</span>
+    maxHeight<span class="sh_symbol">:</span> <span class="sh_number">720</span><span class="sh_symbol">,</span>
+    minFrameRate<span class="sh_symbol">:</span> <span class="sh_number">30</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+
+<span class="sh_comment">// it is same like "connection.session={audio:false}"</span>
+connection<span class="sh_symbol">.</span>mediaConstraints<span class="sh_symbol">.</span>audio <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/sdpConstraints/">sdpConstraints</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>sdpConstraints<span class="sh_symbol">.</span>mandatory <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span>
+    OfferToReceiveAudio<span class="sh_symbol">:</span> <span class="sh_keyword">false</span><span class="sh_symbol">,</span>
+    OfferToReceiveVideo<span class="sh_symbol">:</span> <span class="sh_keyword">false</span><span class="sh_symbol">,</span>
+    VoiceActivityDetection<span class="sh_symbol">:</span> <span class="sh_keyword">false</span><span class="sh_symbol">,</span>
+    IceRestart <span class="sh_symbol">=</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/mute/">mute</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><span class="sh_function">mute</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+    video<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/unmute/">unmute</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">[</span><span class="sh_string">'stream-id'</span><span class="sh_symbol">].</span><span class="sh_function">unmute</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    audio<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+    video<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/stop/">stop</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// stop all local media streams</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">.</span><span class="sh_function">stop</span><span class="sh_symbol">(</span><span class="sh_string">'local'</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// stop all remote media streams</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">.</span><span class="sh_function">stop</span><span class="sh_symbol">(</span><span class="sh_string">'remote'</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// stop all media streams</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">.</span><span class="sh_function">stop</span><span class="sh_symbol">();</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onmute/">onmute</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onmute <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   e<span class="sh_symbol">.</span>mediaElement<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">'poster'</span><span class="sh_symbol">,</span> <span class="sh_string">'photo.jpg'</span><span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onunmute/">onunmute</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onunmute <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   e<span class="sh_symbol">.</span>mediaElement<span class="sh_symbol">.</span><span class="sh_function">removeAttribute</span><span class="sh_symbol">(</span><span class="sh_string">'poster'</span><span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onmessage/">onmessage</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onmessage <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   <span class="sh_comment">// e.data</span>
+   <span class="sh_comment">// e.userid</span>
+   <span class="sh_comment">// e.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onopen/">onopen</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onopen <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   <span class="sh_comment">// e.userid</span>
+   <span class="sh_comment">// e.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onclose/">onclose</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onclose <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   <span class="sh_comment">// e.userid</span>
+   <span class="sh_comment">// e.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onerror/">onerror</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onerror <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+   <span class="sh_comment">// e.userid</span>
+   <span class="sh_comment">// e.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onFileStart/">onFileStart</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onFileEnd/">onFileEnd</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onFileProgress/">onFileProgress</a>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/peers/">peers</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>peers<span class="sh_symbol">[</span><span class="sh_string">'user-id'</span><span class="sh_symbol">].</span><span class="sh_function">addStream</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    screen<span class="sh_symbol">:</span> <span class="sh_keyword">true</span><span class="sh_symbol">,</span>
+    oneway<span class="sh_symbol">:</span> <span class="sh_keyword">true</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/preferSCTP/">preferSCTP</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>preferSCTP <span class="sh_symbol">=</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/streams/">streams</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">.</span><span class="sh_function">mute</span><span class="sh_symbol">();</span>
+connection<span class="sh_symbol">.</span>streams<span class="sh_symbol">.</span><span class="sh_function">unmute</span><span class="sh_symbol">();</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/skipRTCMultiConnectionLogs/">skipRTCMultiConnectionLogs</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// You can disable all logs by setting "window.skipRTCMultiConnectionLogs" to true.</span>
+window<span class="sh_symbol">.</span>skipRTCMultiConnectionLogs <span class="sh_symbol">=</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/firebase/">firebase</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>firebase <span class="sh_symbol">=</span> <span class="sh_string">'chat'</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                     <li>
+						<a href="http://www.rtcmulticonnection.org/docs/admin-guest/">Admin/Guest Scenarios</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">var</span> you <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RTCMultiConnection</span><span class="sh_symbol">();</span>
+<span class="sh_keyword">var</span> he <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RTCMultiConnection</span><span class="sh_symbol">();</span>
+
+you<span class="sh_symbol">.</span>onRequest <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>his_id<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// you're "quickly" accepting his invitation</span>
+    <span class="sh_comment">// you can show a dialog-box too; to allow </span>
+    <span class="sh_comment">// user accept/reject invitation</span>
+    you<span class="sh_symbol">.</span><span class="sh_function">accept</span><span class="sh_symbol">(</span>his_id<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+
+<span class="sh_comment">// he is inviting you</span>
+he<span class="sh_symbol">.</span><span class="sh_function">request</span><span class="sh_symbol">(</span>your_id<span class="sh_symbol">);</span>
+
+<span class="sh_comment">// following lines are necessary because we need to </span>
+<span class="sh_comment">// set signaling gateways</span>
+you<span class="sh_symbol">.</span><span class="sh_function">connect</span><span class="sh_symbol">();</span>
+he<span class="sh_symbol">.</span><span class="sh_function">connect</span><span class="sh_symbol">();</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/onRequest/">onRequest</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onRequest <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>request<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// 2nd parameter "extra" is optional</span>
+    connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/accept/"><span class="sh_function">accept</span></a><span class="sh_symbol">(</span>request<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/request/">request</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// use "user-id" to invite a user</span>
+connection<span class="sh_symbol">.</span><span class="sh_function">request</span><span class="sh_symbol">(</span><span class="sh_string">'userid'</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/accept/">accept</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/onRequest/">onRequest</a> <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>request<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/accept/"><span class="sh_function">accept</span></a><span class="sh_symbol">(</span>request<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/reject/">reject</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/onRequest/">onRequest</a> <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>request<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/reject/"><span class="sh_function">reject</span></a><span class="sh_symbol">(</span>request<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/onstats/">onstats</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/onstats/">onstats</a> <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>stats<span class="sh_symbol">,</span> callee<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// callee is busy</span>
+    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>stats <span class="sh_symbol">==</span> <span class="sh_string">'busy'</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{}</span>
+    
+    <span class="sh_comment">// callee rejected the request</span>
+    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>stats <span class="sh_symbol">==</span> <span class="sh_string">'rejected'</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{}</span>
+
+    <span class="sh_comment">// callee accepted caller's request</span>
+    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>stats <span class="sh_symbol">==</span> <span class="sh_string">'accepted'</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{}</span>
+    
+    <span class="sh_comment">// callee.userid || callee.extra</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/userType/">userType</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// if you want to set "admin"</span>
+connection<span class="sh_symbol">.</span>userType <span class="sh_symbol">=</span> <span class="sh_string">'admin'</span><span class="sh_symbol">;</span>
+
+<span class="sh_comment">// if you want to set "guest"</span>
+connection<span class="sh_symbol">.</span>userType <span class="sh_symbol">=</span> <span class="sh_string">'guest'</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/onAdmin/">onAdmin</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onAdmin <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>admin<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// Lets call admin using his userid</span>
+    connection<span class="sh_symbol">.</span><span class="sh_function">request</span><span class="sh_symbol">(</span>admin<span class="sh_symbol">.</span>userid<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/onGuest/">onGuest</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span>onGuest <span class="sh_symbol">=</span> <span class="sh_keyword">function</span> <span class="sh_symbol">(</span>guest<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// Lets call guest using his userid</span>
+    connection<span class="sh_symbol">.</span><span class="sh_function">request</span><span class="sh_symbol">(</span>guest<span class="sh_symbol">.</span>userid<span class="sh_symbol">);</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/takeSnapshot/">takeSnapshot</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/takeSnapshot/"><span class="sh_function">takeSnapshot</span></a><span class="sh_symbol">(</span><span class="sh_string">'userid'</span><span class="sh_symbol">,</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>snapshot<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    image<span class="sh_symbol">.</span>src <span class="sh_symbol">=</span> snapshot<span class="sh_symbol">;</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li> 
+
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/snapshots/">snapshots</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// iterate over all snapshots/</span>
+<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> snapshot <span class="sh_keyword">in</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/snapshots/">snapshots</a><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    snapshot <span class="sh_symbol">=</span> connection<span class="sh_symbol">.</span>snapshots<span class="sh_symbol">[</span>snapshot<span class="sh_symbol">];</span>
+<span class="sh_cbracket">}</span>
+
+<span class="sh_comment">// or, to access individual snapshot later</span>
+image<span class="sh_symbol">.</span>src <span class="sh_symbol">=</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/snapshots/">snapshots</a><span class="sh_symbol">[</span><span class="sh_string">'userid'</span><span class="sh_symbol">];</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/getStats/">getStats</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/getStats/"><span class="sh_function">getStats</span></a><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>stat<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_comment">// stat.numberOfConnectedUsers</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/stats/">stats</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> stat <span class="sh_keyword">in</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/stats/">stats</a><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>stat<span class="sh_symbol">,</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/stats/">stats</a><span class="sh_symbol">[</span>stat<span class="sh_symbol">]);</span>
+<span class="sh_cbracket">}</span>
+
+<span class="sh_comment">// you can directly access "numberOfConnectedUsers" later like this:</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/stats/">stats</a><span class="sh_symbol">.</span>numberOfConnectedUsers<span class="sh_symbol">);</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a>
+						<pre class="sh_javascript sh_sourceCode">console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>RTCPeerConnection <span class="sh_symbol">);</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>getUserMedia <span class="sh_symbol">);</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>AudioContext <span class="sh_symbol">);</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>ScreenSharing <span class="sh_symbol">);</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>RtpDataChannels <span class="sh_symbol">);</span>
+console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span> connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span>SctpDataChannels <span class="sh_symbol">);</span>
+
+
+connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/caniuse/">caniuse</a><span class="sh_symbol">.</span><span class="sh_function">checkIfScreenSharingFlagEnabled</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span> <span class="sh_symbol">(</span>isFlagEnabled<span class="sh_symbol">,</span> warning<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>isFlagEnabled<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+        console<span class="sh_symbol">.</span><span class="sh_function">error</span><span class="sh_symbol">(</span><span class="sh_string">'Multi-capturing of screen is not allowed. Capturing process is denied. Try chrome &gt;= M31.'</span><span class="sh_symbol">);</span>
+    <span class="sh_cbracket">}</span>
+
+    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>warning<span class="sh_symbol">)</span> console<span class="sh_symbol">.</span><span class="sh_function">error</span><span class="sh_symbol">(</span>warning<span class="sh_symbol">);</span>
+
+    <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(!</span>isFlagEnabled<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>
+        console<span class="sh_symbol">.</span><span class="sh_function">error</span><span class="sh_symbol">(</span><span class="sh_string">'It seems that "Enable screen capture support in getUserMedia" flag is not enabled.'</span><span class="sh_symbol">);</span>
+    <span class="sh_cbracket">}</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+</pre>
+					</li>
+                    
+                    <li>
+						<a href="http://www.rtcmulticonnection.org/docs/iceServers/">iceServers</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_keyword">var</span> iceServers <span class="sh_symbol">=</span> <span class="sh_symbol">[];</span>
+
+<span class="sh_comment">// STUN server</span>
+iceServers<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    url<span class="sh_symbol">:</span> <span class="sh_string">'stun:23.21.150.121:3478'</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+
+<span class="sh_comment">// TURN server</span>
+iceServers<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span>
+    url<span class="sh_symbol">:</span> <span class="sh_string">'turn:turn.bistri.com:80'</span><span class="sh_symbol">,</span>
+    credential<span class="sh_symbol">:</span> <span class="sh_string">'homeo'</span><span class="sh_symbol">,</span>
+    username<span class="sh_symbol">:</span> <span class="sh_string">'homeo'</span>
+<span class="sh_cbracket">}</span><span class="sh_symbol">);</span>
+
+connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/iceServers/">iceServers</a> <span class="sh_symbol">=</span> iceServers<span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/drop/">drop</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/drop/"><span class="sh_function">drop</span></a><span class="sh_symbol">();</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/ondrop/">ondrop</a>
+						<pre class="sh_javascript sh_sourceCode"><span class="sh_comment">// "ondrop" is fired; if media-connection is droppped by other user</span>
+connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/ondrop/">ondrop</a> <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/sendCustomMessage/">sendCustomMessage</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/sendCustomMessage/"><span class="sh_function">sendCustomMessage</span></a><span class="sh_symbol">(</span>any_kind_of_data <span class="sh_symbol">|</span>or<span class="sh_symbol">|</span> string_message<span class="sh_symbol">);</span>
+</pre>
+					</li>
+					
+					<li>
+						<a href="http://www.rtcmulticonnection.org/docs/onCustomMessage/">onCustomMessage</a>
+						<pre class="sh_javascript sh_sourceCode">connection<span class="sh_symbol">.</span><a href="http://www.rtcmulticonnection.org/docs/onCustomMessage/">onCustomMessage</a> <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">(</span>message<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span>
+</pre>
+					</li>
+                   
+				</ol>
+			</li>
+		</ol>
+
+        <br>
+        <br>
+        <section style="border: 1px solid rgb(189, 189, 189); margin: 1em 3em; border-radius: .2em;">
+                <h2 id="feedback" style="padding: .2em .4em; border-bottom: 1px solid rgb(189, 189, 189);">Want to ask a Question?</h2>
+                <div>
+                    <textarea id="message" style="height: 8em; margin: .2em; width: 98%; border: 1px solid rgb(189, 189, 189); outline: none; resize: vertical;" placeholder="Feel free to ask any question regarding RTCMultiConnection.js!"></textarea>
+                </div>
+                <button id="send-message" style="font-size: 1em;">Ask a Question</button><small style="margin-left:1em;">You can include your email for private conversation!</small>
+            </section>
+    </article>
+    <footer>
+        <p>
+            <a href="https://www.webrtc-experiment.com/" target="_blank">WebRTC Experiments!</a>©
+                <a href="https://plus.google.com/100325991024054712503" rel="author" target="_blank">Muaz Khan</a>, <span>2013 </span>»
+                <a href="mailto:muazkh@gmail.com" target="_blank">Email</a>»
+                <a href="http://twitter.com/muazkh" target="_blank">@muazkh</a>»
+                <a href="https://github.com/muaz-khan" target="_blank">Github</a>
+        </p>
+    </footer>
+    <script src="./RTCMultiConnection Docs_files/common.js"></script>
+<script pagespeed_no_defer="">(function(){var e=window,f=Math,g="round",h="performance",k="&rit_script=",r="&rit_link=",y="&rit_img=",z="&rit_css=",A="&nttfb=",B="&nfd=",C="&ndt=",D="&nct=",E="&nbt=",F="&mfd=",G="&attfb=",H="&afd=",I="&adt=",J="&act=",K="&abt=",L="";e.pagespeed=e.pagespeed||{};var M=e.pagespeed;
+M.getResourceTimingData=function(){if(e[h]&&(e[h].getEntries||e[h].webkitGetEntries)){for(var s=0,t=0,l=0,u=0,m=0,v=0,n=0,w=0,p=0,x=0,q=0,c={},d=e[h].getEntries?e[h].getEntries():e[h].webkitGetEntries(),b=0;b<d.length;b++){var a=d[b].duration;0<a&&(s+=a,++l,t=f.max(t,a));a=d[b].connectEnd-d[b].connectStart;0<a&&(v+=a,++n);a=d[b].domainLookupEnd-d[b].domainLookupStart;0<a&&(u+=a,++m);a=d[b].initiatorType;c[a]?++c[a]:c[a]=1;a=d[b].requestStart-d[b].fetchStart;0<a&&(x+=a,++q);a=d[b].responseStart-d[b].requestStart;
+0<a&&(w+=a,++p)}return H+(l?f[g](s/l):0)+B+l+F+f[g](t)+J+(n?f[g](v/n):0)+D+n+I+(m?f[g](u/m):0)+C+m+K+(q?f[g](x/q):0)+E+q+G+(p?f[g](w/p):0)+A+p+(c.css?z+c.css:L)+(c.link?r+c.link:L)+(c.script?k+c.script:L)+(c.img?y+c.img:L)}return L};M.getResourceTimingData=M.getResourceTimingData;})();
+(function(){var c=encodeURIComponent,f=window,h="performance",k="unload:",l="on",m="load:",n="load",p="ets=",q="beforeunload",r="EventStart",s="?",t="=",u="&url=",v="&ttfb=",w="&req_start=",x="&ref=",y="&r",z="&nt=",A="&nrp=",B="&nav=",C="&ifr=1",D="&ifr=0",E="&htmlAt=",F="&fp=",G="&dwld=",H="&dom_c=",I="&dns=",J="&connect=",K="&ccul=",L="&ccrl=",M="&ccos=",N="&ccis=",O="&cces=",P="&b_csi=",Q="&",R="";f.pagespeed=f.pagespeed||{};var S=f.pagespeed,T=function(a,d,b,e){this.d=a;this.a=d;this.b=b;this.e=e};S.beaconUrl=R;
+T.prototype.c=function(){var a=this.d,d=f.mod_pagespeed_start,b=Number(new Date)-d,a=a+(-1==a.indexOf(s)?s:Q),a=a+p+(this.a==n?m:k),a=a+b;if(this.a!=q||!f.mod_pagespeed_loaded){a+=y+this.a+t;if(f[h]){var b=f[h].timing,e=b.navigationStart,g=b.requestStart,a=a+(b[this.a+r]-e),a=a+(B+(b.fetchStart-e)),a=a+(I+(b.domainLookupEnd-b.domainLookupStart)),a=a+(J+(b.connectEnd-b.connectStart)),a=a+(w+(g-e)),a=a+(v+(b.responseStart-g)),a=a+(G+(b.responseEnd-b.responseStart)),a=a+(H+(b.domContentLoadedEventStart-
+e));f[h].navigation&&(a+=z+f[h].navigation.type);e=-1;b.msFirstPaint?e=b.msFirstPaint:f.chrome&&f.chrome.loadTimes&&(e=Math.floor(1E3*f.chrome.loadTimes().firstPaintTime));e-=g;0<=e&&(a+=F+e)}else a+=b;S.getResourceTimingData&&f.parent==f&&(a+=S.getResourceTimingData());a+=f.parent!=f?C:D;this.a==n&&(f.mod_pagespeed_loaded=!0,(b=f.mod_pagespeed_num_resources_prefetched)&&(a+=A+b),(b=f.mod_pagespeed_prefetch_start)&&(a+=E+(d-b)));S.panelLoader&&(d=S.panelLoader.getCsiTimingsString(),d!=R&&(a+=P+d));
+S.criticalCss&&(d=S.criticalCss,a+=N+d.total_critical_inlined_size+O+d.total_original_external_size+M+d.total_overhead_size+L+d.num_replaced_links+K+d.num_unreplaced_links);this.b!=R&&(a+=this.b);document.referrer&&(a+=x+c(document.referrer));a+=u+c(this.e);S.beaconUrl=a;(new Image).src=a}};S.f=function(a,d,b,e){var g=new T(a,d,b,e);f.addEventListener?f.addEventListener(d,function(){g.c()},!1):f.attachEvent(l+d,function(){g.c()})};S.addInstrumentationInit=S.f;})();
+
+pagespeed.addInstrumentationInit('http://1-ps.googleusercontent.com/beacon?org=112_1_dp', 'load', '&s_ttfb=81&id=1389570947714125', 'http://www.rtcmulticonnection.org/docs/');</script>
+
+</body></html>
