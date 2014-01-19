@@ -131,6 +131,7 @@
 
 				
                 connection.onstream = function(e) {
+				alert("teste");
                     audiosContainer.insertBefore(e.mediaElement, audiosContainer.firstChild);
                     rotateAudio(e.mediaElement);
                 };
